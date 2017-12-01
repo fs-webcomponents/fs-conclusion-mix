@@ -79,8 +79,9 @@
    *       return { persons: [{ facts: [this.fact] }] };
    *     };
    *
-   * @customElement
    * @polymer
+   * @mixinFunction
+   * @appliesMixin FSApiAwareMixin
    */
   window.FsConclusionMixin = Polymer.dedupingMixin((superClass) => class extends FSApiAwareMixin(superClass) {
    
