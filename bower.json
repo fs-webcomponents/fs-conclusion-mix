@@ -1,6 +1,7 @@
 {
   "name": "fs-conclusion-mixin",
   "main": "fs-conclusion-mixin.html",
+  "version": "4.0.0",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
     "fs-api-aware": "fs-webcomponents/fs-api-aware#^4.0.0",
