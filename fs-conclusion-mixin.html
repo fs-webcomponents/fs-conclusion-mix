@@ -46,13 +46,34 @@
   const memoizedTemplates = {};
   
   /**
-   * `fs-conclusion`
+   * `FsConclusionMixin`
    * 
-   * Shared code for `fs-fact`, `fs-person-name`, `fs-person-gender`. We want
-   * to share both behavior and a template so create an element that gets
-   * extended. 
+   * Shared code for `fs-fact`, `fs-person-name`, `fs-person-gender`. 
    * 
-   * We might be able to accomplish the same thing with a mixin.
+   * The template is designed for base classes to fill in the #content div with
+   * their own content which places the edit toolbar on top and the attribution
+   * on the bottom. The template is used by adding these lines to the base element:
+   * 
+   *     static get template() {
+   *       return super.conclusionTemplate(this.is);
+   *     }
+   * 
+   * FsConclusionMixin expects the conclusion data to be at the `conclusion`
+   * property. If you want your property to be named something different (e.g.
+   * it makes more sense for a fact conclusion to be set on the fact property)
+   * then setup an observer and sync your property with `conclusion.
+   * 
+   *     _conclusionSync(fact) {
+   *       this.conclusion = fact;
+   *     }
+   * 
+   * The base element must also provide the body of the save request by 
+   * implementing the `_conclusionBody()` method which returns an Object that is
+   * serialized into JSON for the request.
+   * 
+   *     _conclusionBody() {
+   *       return { persons: [{ facts: [this.fact] }] };
+   *     };
    *
    * @customElement
    * @polymer
